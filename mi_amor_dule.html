@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumpleaños Duli 💖</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a043c, #03506f);
+    overflow: hidden;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #fff;
+    text-align: center;
+  }
+  h1 {
+    margin-top: 20vh;
+    font-size: 3em;
+    color: #ffcc70;
+    text-shadow: 0 0 15px #ffcc70;
+  }
+  .start-btn {
+    padding: 15px 30px;
+    background: #fcbf49;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 0 10px #fff;
+  }
+  .hidden {
+    display: none;
+  }
+  .hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    border-radius: 50%;
+    animation: float 8s linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) scale(0.5); }
+    100% { transform: translateY(-10vh) scale(1.2); }
+  }
+  .message {
+    margin-top: 5vh;
+    font-size: 1.5em;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+  }
+  .teddy {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    animation: walk 10s linear infinite;
+  }
+  @keyframes walk {
+    0% { left: -100px; }
+    100% { left: 110%; }
+  }
+</style>
+</head>
+<body><div id="welcome">
+  <h1>Feliz Cumpleaños mi vida 🫶🏻</h1>
+  <button class="start-btn" onclick="startSurprise()">Comenzar</button>
+</div><div id="main-content" class="hidden">
+  <div class="hearts" id="hearts-container"></div>
+  <img src="https://i.imgur.com/UYBdS6G.png" class="teddy" alt="Osito">
+  <div class="message" id="message-box"></div>
+</div><script>
+function startSurprise() {
+  document.getElementById('welcome').style.display = 'none';
+  document.getElementById('main-content').classList.remove('hidden');
+  launchHearts();
+  showMessages();
+}
+
+function launchHearts() {
+  const container = document.getElementById('hearts-container');
+  for (let i = 0; i < 50; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+    container.appendChild(heart);
+  }
+}
+
+const messages = [
+  "Te amo más que a nada 💖",
+  "Gracias por ser mi mejor amiga y mi amor 🫶🏻",
+  "Eres mi mayor felicidad ✨",
+  "Feliz cumpleaños, mi cielo 🌸",
+  "Hoy celebramos tu existencia, mi vida 💌"
+];
+
+let msgIndex = 0;
+function showMessages() {
+  const box = document.getElementById('message-box');
+  box.textContent = messages[msgIndex];
+  msgIndex = (msgIndex + 1) % messages.length;
+  setInterval(() => {
+    box.textContent = messages[msgIndex];
+    msgIndex = (msgIndex + 1) % messages.length;
+  }, 4000);
+}
+</script></body>
+</html>
